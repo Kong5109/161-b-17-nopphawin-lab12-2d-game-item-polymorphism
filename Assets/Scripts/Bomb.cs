@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class Coin : Item
+public class Bomb : Item
 {
     public override void Use(Player player)
     {
         if (player != null)
         {
-            player.DecreaseHealth(itemValue);
+            player.Heal(itemValue);
         }
     }
 }

@@ -6,7 +6,7 @@ public class Coin : Item
     {
         if (player != null)
         {
-            //player
+            player.AddCoin(itemValue);
         }
     }
 }

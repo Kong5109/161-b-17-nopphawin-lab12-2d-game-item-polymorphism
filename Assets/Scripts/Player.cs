@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [field : SerializeField] public int Coin {  get; set; } = 0;
+    [field: SerializeField] public int Health { get; set; } = 50;
     [SerializeField] public Rigidbody2D rb;
 
     //move attibute
@@ -27,13 +29,34 @@ public class Player : MonoBehaviour
         rb.linearVelocity = new Vector2(moveInput.x * speed, rb.linearVelocity.y);
     }
 
-    private void Move()
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Item item = collision.GetComponent<Item>();
+        if (item != null)
+        {
+            item.PickUp(this);
+        }
+    }
+
+    public void AddCoin(int value)
+    {
+        Coin += value;
+        Debug.Log($"Pick Up Coin! Total coin: " +Coin);
+    }
+
+    public void Heal(int value)
+    {
+        Health += value;
+        Debug.Log($"Pick Up Heal! Current Health: " + Health);
+    }
+
+    public void Move()
     {
         // Movement (old input system)
         moveInput.x = Input.GetAxisRaw("Horizontal");
     }
 
-    private void Jump()
+    public void Jump()
     {
         // Jump (new input system)
         if (Keyboard.current.spaceKey.wasPressedThisFrame)

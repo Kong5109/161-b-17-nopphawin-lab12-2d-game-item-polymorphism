@@ -6,7 +6,7 @@ public class Bomb : Item
     {
         if (player != null)
         {
-            player.Heal(itemValue);
+            player.DecreaseHealth(itemValue);
         }
     }
 }

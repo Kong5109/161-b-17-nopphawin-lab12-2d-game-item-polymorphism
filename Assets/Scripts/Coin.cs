@@ -6,7 +6,7 @@ public class Coin : Item
     {
         if (player != null)
         {
-            player.DecreaseHealth(itemValue);
+            player.AddCoin(itemValue);
         }
     }
 }

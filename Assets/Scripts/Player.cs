@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] public Rigidbody2D rb;
 
     //move attibute
+    [Header("Move Attibute")]
     [SerializeField] private float speed = 5;
     [SerializeField] private float jumpForce = 8;
 
@@ -50,6 +51,11 @@ public class Player : MonoBehaviour
         Debug.Log($"Pick Up Heal! Current Health: " + Health);
     }
 
+    public void DecreaseHealth(int value)
+    {
+        Health -= value;
+        Debug.Log($"Ahhh....decrease health! Current Health: " + Health);
+    }
     public void Move()
     {
         // Movement (old input system)
